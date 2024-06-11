@@ -1,17 +1,18 @@
 import React, { useEffect, useState} from "react";
 import ReactDOM from "react-dom";
 import MovieCard from './MovieCard';
+import './MovieList.css'
 
 
+const MovieList = ({query, filter}) => {
+    const [movies, setMovies] = useState([]);
+    const [page, setPage]  = useState(1);
 
-
-const MovieList = () => {
-    const [movies, setMovie] = useState([]);
     useEffect(() => {
         const getMovies = async () => {
 
         
-        const url = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1';
+        const url = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}`;
         const options = {
             method: 'GET',
             headers: {
@@ -22,22 +23,35 @@ const MovieList = () => {
     
         const response = await fetch(url, options); 
         const data = await response.json(); 
-        setMovie(data);
+
+        if (page > 1) {
+            setMovies(prev => [
+                ...prev, ...data.results
+            ])
+        }
+        else {
+            setMovies(data.results);
+        }
     }; 
     
     getMovies(); 
 
-    }, []); 
+    }, [page, query, filter]); 
 
-    // console.log(data);
+    const loadMore = () => {
+        setPage(page+1)
+    }
 
     return (
-        <div className="movie-cards">
+        <div className="movie-list">
             {
-                movies.results.map(movie => {
-                    <MovieCard imgPath={movie.poster_path} title={movie.title} rating={movie.vote_average}/>
-                })
+                movies.map(movie => (
+                    
+                    <MovieCard key={movie.id} imgPath={'https://image.tmdb.org/t/p/w500'+ movie.poster_path} title={movie.title} rating={movie.vote_average} release-date={movie.release_date}/>
+  
+                ))
             }
+            <button id="load-more" onClick={loadMore}>Load More</button>
         </div>
     );
 }

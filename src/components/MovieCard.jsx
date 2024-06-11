@@ -1,13 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import PropTypes from 'prop-types';
+import './MovieCard.css'
 
 const MovieCard = (props) => {
+    console.log(props.imgPath);
     return (
         <div className="movie-card">
-            <img className="img-path" src={props.imgPath}/>
-            <h2 className="title">title: {props.title}</h2>
-            <p className="rating">rating: {props.rating}</p>
+            <img className="poster" src={props.imgPath}/>
+            <h2 className="title">{props.title}</h2>
+            <p className="rating">{props.rating}</p>
+            <p className="release-date">{props.release_date}</p>
         </div>
     );
 }
