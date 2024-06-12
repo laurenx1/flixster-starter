@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import ReactDOM from "react-dom";
 import SearchForm from './SearchForm';
 import DropDown from './DropDown'
@@ -11,6 +11,9 @@ const Header = (props) => {
             <div className="header-options">
                 <SearchForm></SearchForm>
                 <DropDown></DropDown>
+                <div className="now-playing">
+                    <button className="now-playing-button" ></button>
+                </div>
             </div>
         </div>
         

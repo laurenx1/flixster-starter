@@ -47,7 +47,7 @@ const MovieList = ({query, filter}) => {
             {
                 movies.map(movie => (
                     
-                    <MovieCard key={movie.id} imgPath={'https://image.tmdb.org/t/p/w500'+ movie.poster_path} title={movie.title} rating={movie.vote_average} release-date={movie.release_date}/>
+                    <MovieCard key={movie.id} imgPath={'https://image.tmdb.org/t/p/w500'+ movie.poster_path} title={movie.title} rating={movie.vote_average} release_date={movie.release_date}/>
   
                 ))
             }
@@ -56,9 +56,5 @@ const MovieList = ({query, filter}) => {
     );
 }
 
-// MovieCard.propTypes = {
-//     title: PropTypes.string.isRequired,
-//     title: PropTypes.string.isRequired
-//   };
 
 export default MovieList; 

@@ -1,5 +1,9 @@
 .header {
     background-color: black;
+
+}
+
+.header h1{
     color: #ffffff;
 }
 
@@ -10,7 +14,7 @@
 .searchform{
     margin: 10px;
 }
-
+/*
 .search-button {
     background: #C31991;
     border-radius: 12px;
@@ -39,7 +43,7 @@
 
 .front:hover {
     background: #F625B7;
-}
+} */
 
 
 .dropdown-menu{
