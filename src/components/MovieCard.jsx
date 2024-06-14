@@ -1,12 +1,22 @@
 import React from "react";
+import {useState} from 'react';
 import ReactDOM from "react-dom";
 import PropTypes from 'prop-types';
 import './MovieCard.css'
 
+
 const MovieCard = (props) => {
-    console.log(props.imgPath);
+
+    const handleSetShow = () => {
+        props.setShow(true);
+        console.log('show modal!'); 
+        console.log(props.id);
+        props.setClickedMov(props.id);
+    }
+
+
     return (
-        <div className="movie-card">
+        <div className="movie-card" onClick={handleSetShow}>
             <div className="poster-overlay">
                 <img className="poster" src={props.imgPath}/>
             </div>
@@ -16,10 +26,4 @@ const MovieCard = (props) => {
         </div>
     );
 }
-
-// MovieCard.propTypes = {
-//     title: PropTypes.string.isRequired,
-//     title: PropTypes.string.isRequired
-//   };
-
-export default MovieCard; 
+export default MovieCard;

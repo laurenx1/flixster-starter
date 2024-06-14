@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import ReactDOM from "react-dom";
 import SearchForm from './SearchForm';
-import DropDown from './DropDown'
+import DropDown from './DropDown';
 import './Header.css';
 
 const Header = (props) => {
@@ -9,8 +9,8 @@ const Header = (props) => {
         <div className="header">
             <h1>Flixter 🎬</h1>
             <div className="header-options">
-                <SearchForm></SearchForm>
-                <DropDown></DropDown>
+                <SearchForm query={props.query} setQuery={props.setQuery}></SearchForm>
+                <DropDown sort={props.sort} setSort={props.setSort}></DropDown>
                 <div className="now-playing">
                     <button className="now-playing-button" ></button>
                 </div>

@@ -2,20 +2,33 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import './components/MovieList'
 import MovieList from './components/MovieList';
-import Header from './components/Header'
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 const App = () => {
   const [movies, setMovies] = useState([]);
   const [page, setPage]  = useState(1);
   const [query, setQuery] = useState('');
+  const [sort, setSort] = useState('');
 
-  
+
+
 
   useEffect(() => {
       const getMovies = async () => {
 
-      
-      const url = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}`;
+      let url;
+      if (query === "") {
+        url = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}`;
+      } else {
+        url = `https://api.themoviedb.org/3/search/movie?query=${query}&language=en-US&page=${page}`
+      }
+      if ((sort === 'popular') || (sort === 'top_rated')) {
+        url = `https://api.themoviedb.org/3/movie/${sort}?language=en-US&page=${page}}`
+      }
+
+
+
       const options = {
           method: 'GET',
           headers: {
@@ -35,11 +48,12 @@ const App = () => {
       else {
           setMovies(data.results);
       }
+      
   }; 
   
   getMovies(); 
 
-  }, []); 
+  }, [query, page, sort]); 
 
   const loadMore = () => {
       setPage(page+1)
@@ -48,8 +62,9 @@ const App = () => {
 
   return (
     <div className="App">
-      <Header/>
-      <MovieList movies={movies} loadMore={loadMore}/>
+      <Header setQuery={setQuery} query={query} sort={sort} setSort={setSort}/>
+      <MovieList movies={movies} loadMore={loadMore} />
+      <Footer/>
     </div>
   );
 }
