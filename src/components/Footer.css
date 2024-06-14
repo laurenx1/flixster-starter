@@ -1,0 +1,11 @@
+.footer {
+    background: #f657c7;
+    position: absolute;
+    bottom: 0;
+    width: 100%;    
+    background-attachment: scroll;
+    background-position: 0% 0%;
+    position: fixed;
+    bottom: 0pt;
+    left: 0pt;
+}
