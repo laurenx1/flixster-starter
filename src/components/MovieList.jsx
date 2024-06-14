@@ -10,6 +10,8 @@ const MovieList = (props) => {
     const [show, setShow] = useState(false);
     const [clickedMov, setClickedMov] = useState('');
     const [clickCoords, setClickCoords] = useState(null);
+    const [selectedDetailsAndVid, setSelectedDetailsAndVid] = useState(null);
+
 
     const handleCoords = useCallback((e) => {
         setClickCoords({ x: e.clientX, y: e.clientY });
@@ -29,12 +31,25 @@ const MovieList = (props) => {
             {
                 props.movies.map(movie => (
                     
-                    <MovieCard key={movie.id} id={movie.id} imgPath={'https://image.tmdb.org/t/p/w500'+ movie.poster_path} title={movie.title} rating={movie.vote_average} release_date={movie.release_date} setShow={setShow} setClickedMov={setClickedMov} />
+                    <MovieCard 
+                    key={movie.id} 
+                    id={movie.id} 
+                    imgPath={'https://image.tmdb.org/t/p/w500'+ movie.poster_path} 
+                    title={movie.title} rating={movie.vote_average} 
+                    release_date={movie.release_date} 
+                    setShow={setShow} 
+                    setClickedMov={setClickedMov}
+                    setSelectedDetailsAndVid={setSelectedDetailsAndVid}
+                    />
   
                 ))
             }
             <button id="load-more" onClick={props.loadMore}>Load More</button>
-            {show && <MovieModal clickedMov={clickedMov} modalStyle={modalStyle} setShow={setShow}></MovieModal>}
+            {show && <MovieModal 
+            clickedMov={clickedMov} 
+            modalStyle={modalStyle} 
+            setShow={setShow} 
+            selectedDetailsAndVid={selectedDetailsAndVid}></MovieModal>}
         </div>
     );
 }

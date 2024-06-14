@@ -17,11 +17,13 @@ const DropDown = (props) => {
     return (
       <div className="dropdown">
         <select onChange={onChange}>
-          <option required value="">Sort by</option>
+          <option required value="x">Sort by</option>
+          <option required value="">Back to Now Playing</option>
           <option required value="popular"  onClick={onChange}>Popularity Descending</option>
         
           <option required value="release-date"  onSelect={onChange}>Release Date Descending</option> 
           <option required value="top_rated"  onSelect={onChange}>Rating Descending</option>
+          
         </select>
       </div>
     );

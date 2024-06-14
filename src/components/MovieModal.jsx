@@ -3,7 +3,10 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import './MovieModal.css'
 
+// note that clickedMov is a movieID, can use thsi to make the video call 
+
 function MovieModal(props) {
+
     const handleCloseModal = (event) => {
         props.setShow(false);
         event.stopPropagation();

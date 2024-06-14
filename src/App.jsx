@@ -10,6 +10,7 @@ const App = () => {
   const [page, setPage]  = useState(1);
   const [query, setQuery] = useState('');
   const [sort, setSort] = useState('');
+  const [filter, setFilter] = useState('')
 
 
 
@@ -17,15 +18,29 @@ const App = () => {
   useEffect(() => {
       const getMovies = async () => {
 
+      let apiKey = import.meta.env.VIT_API_KEY; 
+      
       let url;
       if (query === "") {
         url = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}`;
       } else {
         url = `https://api.themoviedb.org/3/search/movie?query=${query}&language=en-US&page=${page}`
       }
-      if ((sort === 'popular') || (sort === 'top_rated')) {
+      if ((sort === 'popular') || (sort === 'top_rated') || (sort === 'release_date')) {
         url = `https://api.themoviedb.org/3/movie/${sort}?language=en-US&page=${page}}`
       }
+      else if (sort === '') {
+        url = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}`;
+      }
+
+      if (filter !== '') {
+        url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&page=${page}&with_genres=${filter}}`
+      }
+      else {
+        url = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}`;
+      }
+
+
 
 
 
@@ -53,7 +68,7 @@ const App = () => {
   
   getMovies(); 
 
-  }, [query, page, sort]); 
+  }, [query, page, sort, filter]); 
 
   const loadMore = () => {
       setPage(page+1)
@@ -62,7 +77,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Header setQuery={setQuery} query={query} sort={sort} setSort={setSort}/>
+      <Header setQuery={setQuery} query={query} sort={sort} setSort={setSort} filter={filter} setFilter={setFilter}/>
       <MovieList movies={movies} loadMore={loadMore} />
       <Footer/>
     </div>
