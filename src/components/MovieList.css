@@ -3,3 +3,37 @@
     flex-wrap: wrap; 
     justify-content: center;
 }
+
+
+.load-more {
+    background: #C31991;
+    border-radius: 12px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline-offset: 4px;
+    height: 50px; 
+    width: 100px; 
+  }
+
+  .front {
+    display: block;
+    padding: 6px 24px;
+    border-radius: 12px;
+    background: #F657C7;
+    color: white;
+    transform: translateY(-6px);
+  }
+
+  .load-more:active .front {
+    transform: translateY(-2px);
+  }
+
+.load-more:hover {
+    background: #AF047C;
+}
+
+.front:hover {
+    background: #F625B7;
+} 
+

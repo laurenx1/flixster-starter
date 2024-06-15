@@ -48,7 +48,7 @@ const MovieList = (props) => {
   
                 ))
             }
-            <button id="load-more" onClick={props.loadMore}>Load More</button>
+            <button className="load-more" onClick={props.loadMore}>Load More</button>
             {show && <MovieModal 
             clickedMov={clickedMov} 
             modalStyle={modalStyle} 

@@ -11,16 +11,90 @@
 
 }
  .modal-content {
-    border-radius: 25px 25px 25px 25px;
-    background: rgb(142,227,255);
-    background: linear-gradient(248deg, rgba(142,227,255,1) 0%, rgba(242,129,255,1) 35%, rgba(255,109,168,1) 62%, rgba(255,184,81,1) 100%);
+    position: relative; 
+    background: (0, 0, 0, 0);
     /* background: rgb(0,147,196);
     background: linear-gradient(90deg, rgba(0,147,196,1) 0%, rgba(195,0,218,1) 35%, rgba(255,151,0,1) 100%); */
     margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
     /*border: 1px solid #888;*/
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 727px; /* Could be more or less, depending on screen size */
     /*flex display for every div in the modal*/
+    height: 409px; 
     color: #ffffff;
-  
  }
+
+ .modal-close-button {
+    position: absolute; 
+    top: 10px; 
+    right: 363px; 
+    width: 30px; 
+    height: 30px; 
+
+    cursor: pointer; 
+
+ }
+
+
+ .modal-close-button:before,
+ .modal-close-button:after {
+   content: '';
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   width: 14px;
+   height: 2px;
+   background-color: white;
+   transform: translate(-50%, -50%) rotate(45deg);
+   transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+ }
+ .modalclose-button:after {
+   transform: translate(-50%, -50%) rotate(-45deg);
+ }
+ .modal-close-button:hover:before,
+ .modal-close-button:hover:after {
+   background-color: pink;
+   transform: translate(-50%, -50%) rotate(360deg);
+ }
+
+
+
+ .modal-text {
+    position: absolute; 
+    top: 10px; 
+    /* transform: translate(-50%, -50%); */
+    color: white;
+    font-size: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+ }
+
+ .modal-content:hover .modal-text {
+    opacity: 1;
+  }
+
+
+ .video {
+    display: inline-flex;
+    border-radius: 25px; 
+    overflow: hidden; 
+    filter: brightness(0.4);
+ }
+
+
+ .modal-overview {
+    position: absolute; /* Use absolute positioning to place the text on top of the video */
+    bottom: 10px; /* Adjust the value to change the vertical position of the text */
+    left: 10px; /* Adjust the value to change the horizontal position of the text */
+  }
+  .modal-overview span {
+    animation: fadeIn 0.1s ease forwards; /* Add the fadeIn animation to each letter */
+    opacity: 0; /* Hide the letter initially */
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0; /* Start with 0 opacity */
+    }
+    100% {
+      opacity: 1; /* End with full opacity */
+    }
+  }

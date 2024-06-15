@@ -15,7 +15,9 @@
     width: 100%; 
     font-size: 1em;
 }
-
+.stars {
+    display: inline-flex; 
+}
 
 .title {
     opacity: 0%;
@@ -92,3 +94,19 @@
     opacity: 0;
     transition-delay: 0s;
   }
+
+
+  .liked {
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    color: white;
+  }
+
+.dislike:hover {
+    color: red;
+}
+
+.like:hover {
+    color: green; 
+}

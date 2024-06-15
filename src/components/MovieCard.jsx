@@ -39,12 +39,33 @@ const MovieCard = (props) => {
             console.error("Error fetching movie details or trailers:", error)
           }
 
+          console.log(props.selectedDetailsAndVid);
           props.setShow(true);
           console.log('show modal!'); 
           console.log(props.id);
           props.setClickedMov(props.id);
   
     }
+
+    const [rating, setRating] = useState(0);
+    const handleStarClick = (index) => {
+        setRating(index + 1);
+    }
+
+    const [liked, setLiked] = useState(false);
+    const [disliked, setDisliked] = useState(false);
+    const changeColor = (event) => {
+        event.stopPropagation();
+        if (event.target.classList.contains("like")) {
+            setLiked(!liked);
+            setDisliked(false);
+            
+        } else if (event.target.classList.contains("dislike")) {
+            setDisliked(!disliked);
+            setLiked(false);
+        }
+    }
+
 
 
     return (
@@ -55,6 +76,8 @@ const MovieCard = (props) => {
             <p className="release-date">{props.release_date}</p>
             <h2 className="title">{props.title}</h2>
             <p className="rating">{props.rating}</p>
+            <button className={`like ${liked ? "active" : ""}`} style={{color: liked ? "green" : "black"}} onClick={changeColor}>•ᴗ•</button>
+            <button className={`dislike ${disliked ? "active" : ""}`} style={{color: disliked ? "red" : "black"}} onClick={changeColor}>˙◠˙</button>
         </div>
     );
 }
