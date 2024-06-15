@@ -6,16 +6,14 @@ import './MovieCard.css'
 
 
 const MovieCard = (props) => {
-    const apiKey = import.meta.env.VIT_API_KEY; 
+    const apiKey = import.meta.env.VITE_API_KEY; 
     const videosURL = `https://api.themoviedb.org/3/movie/${props.id}/videos?api_key=${apiKey}`;
     const detailsURL = `https://api.themoviedb.org/3/movie/${props.id}?api_key=${apiKey}`;
 
 
+    // handling for opening the MovieModal onClick, grabs all info abt the movie corresponding 
+    // ^ to the MovieCard that is clicked s.t. the MovieModal can have it
     const handleSetShow = async () => {
-        props.setShow(true);
-        console.log('show modal!'); 
-        console.log(props.id);
-        props.setClickedMov(props.id);
 
         try {
             const detailsResponse = await fetch(detailsURL)
@@ -34,11 +32,18 @@ const MovieCard = (props) => {
             const trailerURL = trailer ? `https://www.youtube.com/embed/${trailer.key}` : null
       
             props.setSelectedDetailsAndVid({...details, trailerURL})
+            
 
 
         } catch (error) {
             console.error("Error fetching movie details or trailers:", error)
           }
+
+          props.setShow(true);
+          console.log('show modal!'); 
+          console.log(props.id);
+          props.setClickedMov(props.id);
+  
     }
 
 
@@ -53,4 +58,6 @@ const MovieCard = (props) => {
         </div>
     );
 }
+
+
 export default MovieCard;

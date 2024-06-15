@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="footer">
             <div>
                 <a href='https://github.com/laurenx1' target="_blank" rel="noopener noreferrer">
-                    <img className="resume" src="/assets/gitg"/>
+                    <img className="resume" src="/assets/github_logo_1.png"/>
                 </a>
             </div>
         </div>

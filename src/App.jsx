@@ -29,16 +29,17 @@ const App = () => {
       if ((sort === 'popular') || (sort === 'top_rated') || (sort === 'release_date')) {
         url = `https://api.themoviedb.org/3/movie/${sort}?language=en-US&page=${page}}`
       }
-      else if (sort === '') {
+      else if (sort === '' && query === '') {
         url = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}`;
       }
 
       if (filter !== '') {
         url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&page=${page}&with_genres=${filter}}`
       }
-      else {
+      else if (sort === '' && query === ''){
         url = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}`;
       }
+    
 
 
 

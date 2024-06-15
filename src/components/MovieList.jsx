@@ -12,11 +12,13 @@ const MovieList = (props) => {
     const [clickCoords, setClickCoords] = useState(null);
     const [selectedDetailsAndVid, setSelectedDetailsAndVid] = useState(null);
 
-
+    // TODO: fix this
     const handleCoords = useCallback((e) => {
         setClickCoords({ x: e.clientX, y: e.clientY });
       }, []);
 
+
+    // TODO: fix this
     const modalStyle = {
         display: 'inline-block',
         position: 'fixed',
@@ -24,6 +26,7 @@ const MovieList = (props) => {
         top: `${clickCoords?.y ?? 0}px`,
         left: `${clickCoords?.x ?? 0}px`,
     };
+
 
 
     return (
@@ -40,6 +43,7 @@ const MovieList = (props) => {
                     setShow={setShow} 
                     setClickedMov={setClickedMov}
                     setSelectedDetailsAndVid={setSelectedDetailsAndVid}
+                    selectedDetailsAndVid={selectedDetailsAndVid}
                     />
   
                 ))

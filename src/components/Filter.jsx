@@ -5,15 +5,11 @@ import './Filter.css'
 
 const Filter = (props) => {
     const onChange = (e) => {
-        // console.log('hi')
         console.log(e.target.value);
         props.setFilter(e.target.value);
     }
-    // const check = () => {
-    //     console.log('hello'); 
-    // }
 
-    // sort by release date not working yet, could not find API
+
     return (
       <div className="filter-dropdown">
         <select onChange={onChange}>
@@ -42,4 +38,6 @@ const Filter = (props) => {
       </div>
     );
   };
+
+  
   export default Filter;
