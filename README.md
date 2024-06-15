@@ -43,8 +43,8 @@ Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE) -> trie
 
 #### STRETCH FEATURES
 
-- [ ] **Deployment**
-  - [ ] Website is deployed via Render.
+- [ x] **Deployment**
+  - [x ] Website is deployed via Render.
 - [ x] **Embedded Movie Trailers**
   - [x ] Within the popup displaying a movie's details, users can play the movie trailer.
 - [x ] **Watched Checkbox**
