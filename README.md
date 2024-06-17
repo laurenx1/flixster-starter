@@ -58,7 +58,7 @@ Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE) -> trie
 ### Walkthrough Video
 
 `ADD_EMBEDDED_CODE_HERE`
-https://drive.google.com/file/d/14gLHVgPtxWfTrQHD9gpid7bSvamPh8GU/view?usp=drive_link 
+https://youtu.be/5P_zH-VkIlU 
 
 ### Reflection
 
